@@ -8,17 +8,17 @@ import (
 )
 
 type InMemoryRepository struct {
-	logger *logrus.Entry
-	config *config.Config
+	logger logrus.Entry
+	config config.Config
 }
 
-func NewInMemoryAdapter(logger *logrus.Entry, config *config.Config) *InMemoryRepository {
+func NewInMemoryAdapter(logger logrus.Entry, config config.Config) InMemoryRepository {
 	return &InMemoryRepository{
 		logger: logger,
 		config: config}
 }
 
-func (m *InMemoryRepository) GetSampleData() (*dao.SampleData, error) {
+func (m InMemoryRepository) GetSampleData() (*dao.SampleData, error) {
 	//mock data obj here
 	data_obj := &dao.SampleData{
 		ID:   "<dummy_id>",

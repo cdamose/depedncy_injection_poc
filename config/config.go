@@ -14,13 +14,13 @@ type Config struct {
 	Duration     time.Duration `env:"DURATION"`
 }
 
-func InitConfig(logger *log.Entry) *Config {
+func InitConfig(logger log.Entry) Config {
 	cfg := Config{}
 	err := env.Parse(&cfg)
 	if err != nil {
 		fmt.Printf("%+v\n", err)
 	}
 	fmt.Printf("%+v\n", err)
-	return &cfg
+	return cfg
 
 }
