@@ -3,8 +3,7 @@ package domain
 import (
 	"github/cdamose/depedncy_injection_poc/config"
 	"github/cdamose/depedncy_injection_poc/dto"
-	//"github/cdamose/depedncy_injection_poc/repository"
-	"github/cdamose/depedncy_injection_poc/repository/adapter"
+	"github/cdamose/depedncy_injection_poc/repository"
 
 	"github.com/sirupsen/logrus"
 )
@@ -12,10 +11,10 @@ import (
 type UserDomain struct {
 	logger     logrus.Entry
 	config     config.Config
-	repository adapter.InMemoryRepository
+	repository repository.Repository
 }
 
-func NewUserDomain(logger logrus.Entry, config config.Config, repository adapter.InMemoryRepository) UserDomain {
+func NewUserDomain(logger logrus.Entry, config config.Config, repository repository.Repository) UserDomain {
 	return UserDomain{
 		logger:     logger,
 		config:     config,

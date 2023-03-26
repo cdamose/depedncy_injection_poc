@@ -12,7 +12,7 @@ type InMemoryRepository struct {
 	config config.Config
 }
 
-func NewInMemoryAdapter(logger logrus.Entry, config config.Config) InMemoryRepository {
+func NewInMemoryAdapter(logger logrus.Entry, config config.Config) *InMemoryRepository {
 	return &InMemoryRepository{
 		logger: logger,
 		config: config}

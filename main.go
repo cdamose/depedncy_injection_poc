@@ -2,7 +2,9 @@ package main
 
 import (
 	//"fmt"
+	"fmt"
 	"github/cdamose/depedncy_injection_poc/common/logs"
+
 	//"github/cdamose/depedncy_injection_poc/config"
 	//"github/cdamose/depedncy_injection_poc/domain"
 	//"github/cdamose/depedncy_injection_poc/repository/adapter"
@@ -15,22 +17,14 @@ func main() {
 	// logger parr initialization
 	logs.Init()
 	logger := logrus.NewEntry(logrus.StandardLogger())
-	// config part initialization
-	//cfg := config.InitConfig(logger)
-	cfg, _ := InitializeEvent(*logger)
-	
-	 logger.WithFields(log.Fields{
-	 	"confi_obj": cfg,
-	 }).Info("After config initialized")
 
-	// //Repository Initialization
+	domain_obj, _ := InitializeDomain(*logger)
 
-	// repo := adapter.NewInMemoryAdapter(logger, cfg)
+	logger.WithFields(log.Fields{
+		"confi_obj": domain_obj,
+	}).Info("After config initialized")
 
-	// //service initilazation
-	// domain := domain.NewUserDomain(logger, cfg, repo)
-
-	// data, _ := domain.GetUserDetails()
-	// fmt.Printf("%+v\n", data)
+	data, _ := domain_obj.GetUserDetails()
+	fmt.Println(data)
 
 }
